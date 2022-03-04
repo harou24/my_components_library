@@ -1,15 +1,8 @@
 import React from 'react'
 import { GridLayout, GridTile } from './Grid.styles'
 import { GridProps, TileProps } from './Types'
-import { generateGridAreas } from './utils'
+import { generateGridAreas, getGridTemplateAreas } from './utils'
 
-let gridProps: GridProps = {
-    nbColumns: 25,
-    nbRows: 25,
-    spaceBtwnColumns: '1fr',
-    spaceBtwnRows: '100px',
-    generateGridAreas: generateGridAreas,
-}
 
 let tileProps: TileProps = {
     area: "Test",
@@ -19,14 +12,9 @@ let tileProps: TileProps = {
 
 const Tile = (gridProps: GridProps, tileProps: TileProps, element: JSX.Element) => {
     
-    if (!gridProps.gridAreas)
-        gridProps.gridAreas = generateGridAreas(gridProps.nbColumns, gridProps.nbRows)
-    else {
-        let currentRow = gridProps.gridAreas[tileProps.posY]
-        currentRow.slice(tileProps.posX)
+    let currentRow = gridProps.gridAreas[tileProps.posY]
+    currentRow.slice(tileProps.posX)
         
-    }
-
     return (
         <GridTile {...tileProps}>
             {element}
@@ -34,10 +22,14 @@ const Tile = (gridProps: GridProps, tileProps: TileProps, element: JSX.Element) 
     )
 }
 
-const Grid = () => {
+const Grid = (props: GridProps) => {
+    let gridProps: GridProps = {...props}
+    gridProps.gridAreas = generateGridAreas(props.nbColumns, props.nbRows)
+    gridProps.gridTemplateAreas = getGridTemplateAreas(gridProps.gridAreas)
+    console.log('TEST->', gridProps)
     return (
            <GridLayout {...gridProps}>
-               { Tile(gridProps, tileProps, <h1>Hello</h1>) }
+
            </GridLayout> 
     )
 }

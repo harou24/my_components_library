@@ -3,8 +3,8 @@ export type GridProps = {
     nbColumns: number,
     spaceBtwnRows?: string,
     spaceBtwnColumns?: string,
-    gridAreas?: string[],
-    generateGridAreas?: (nbColumns: number, nbRows: number) => string[],
+    gridAreas?: string[][],
+    gridTemplateAreas?: string[],
 }
 
 export type TileProps = {
