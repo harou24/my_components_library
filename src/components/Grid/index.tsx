@@ -1,35 +1,24 @@
 import React from 'react'
 import { GridLayout, GridTile } from './Grid.styles'
 import { GridProps, TileProps } from './Types'
-import { generateGridAreas, getGridTemplateAreas } from './utils'
+import { initGrid } from './utils'
 
-
-let tileProps: TileProps = {
-    area: "Test",
-    posX: 0,
-    posY: 0,
-}
-
-const Tile = (gridProps: GridProps, tileProps: TileProps, element: JSX.Element) => {
-    
-    let currentRow = gridProps.gridAreas[tileProps.posY]
-    currentRow.slice(tileProps.posX)
-        
+const Tile = (gridProps: GridProps, tileProps: TileProps) => {
+    console.log("AFTER->",gridProps)
     return (
         <GridTile {...tileProps}>
-            {element}
+            {tileProps.element}
         </GridTile>
     )
 }
 
 const Grid = (props: GridProps) => {
-    let gridProps: GridProps = {...props}
-    gridProps.gridAreas = generateGridAreas(props.nbColumns, props.nbRows)
-    gridProps.gridTemplateAreas = getGridTemplateAreas(gridProps.gridAreas)
-    console.log('TEST->', gridProps)
+
+    let gridProps: GridProps = initGrid(props)
+
     return (
            <GridLayout {...gridProps}>
-
+               {gridProps.tiles.map((tile, id) => Tile(gridProps, tile))}
            </GridLayout> 
     )
 }
