@@ -1,4 +1,5 @@
 export type GridProps = {
+    inlineGrid?: boolean,
     nbRows: number,
     nbColumns: number,
     spaceBtwnRows?: string,
@@ -12,5 +13,7 @@ export type TileProps = {
     area: string, 
     posX: number,
     posY: number,
-    element: JSX.Element
+    alignSelf?: string,
+    justifySelf?: string,
+    element?: JSX.Element
 }
