@@ -5,9 +5,9 @@ import { TextContainer, H1, H2, P } from './Text.styles'
 const Text = (props: TextProps) => {
     return (
         <TextContainer>
-            <H1>{props.title}</H1>
-            <H2>{props.subtitle}</H2>
-            <P>{props.paragraph}</P>
+            {props.title ? <H1>{props.title}</H1> : ''}
+            {props.subtitle ? <H2>{props.subtitle}</H2> : ''}
+            {props.paragraph ? <P>{props.paragraph}</P> : ''}
         </TextContainer>        
     )
 }

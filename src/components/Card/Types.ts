@@ -1,6 +1,7 @@
 export type CardProps = {
     isBgImage?: boolean,
-    bgColor: string,
+    bgColor?: string,
+    bg?: string,
     bgImage?: string,
     borderRadius?: string,
     boxShadow?: string,
@@ -8,4 +9,5 @@ export type CardProps = {
     width: string,
     opacity?: string,
     isCursorPointer?: boolean,
+    element?: JSX.Element,
 }

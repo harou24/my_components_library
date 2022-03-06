@@ -5,9 +5,10 @@ export const TextContainer = styled.div`
     flex-direction: column;
     height: 100%;
     width: 100%;
+    justify-content: center;
+    align-items: center;
     text-align: center;
 `;
-
 
 export const H1 = styled.h1`
     font-size: 38px;
