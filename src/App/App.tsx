@@ -8,6 +8,7 @@ import { TextProps } from '../components/Text/Types';
 import Text from '../components/Text'
 import Carousel from '../components/Carousel';
 import { CarouselProps } from '../components/Carousel/Types';
+import Navigation from '../components/Nav';
 
 let text: TextProps = {
     paragraph: 'hello',
@@ -39,7 +40,7 @@ export default () => {
     return (
         <>
             <GlobalStyle/>
-            <Carousel {...items}/>
+            <Navigation/>
         </>
     )
 };
